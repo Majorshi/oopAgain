@@ -1,5 +1,5 @@
-  <link href="../static/css/home.css" rel="stylesheet" /> 
-  <link href="http://lib.sinaapp.com/js/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet" /> 
+
+  <link href="/paperevalu/static/css/bootstrap.min.css" rel="stylesheet" /> 
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
    <div class="container"> 
     <div class="navbar-header"> 

@@ -19,11 +19,11 @@
 		</div>
 		<div class="form-group">
 	    	<label>论文题目：</label>
-	    	<input name="paper_title" type="text" class="form-control" id="inputTitle" placeholder="请输入您的论文题目">
+	    	<input required="required" name="paper_title" type="text" class="form-control" id="inputTitle" placeholder="请输入您的论文题目">
 		</div>
 		<div class="form-group">
 	    	<label>论文摘要：</label>
-	    	<textarea name="paper_abstract" class="form-control" placeholder="请填写论文摘要" style="height:200px"></textarea>
+	    	<textarea required="required" name="paper_abstract" class="form-control" placeholder="请填写论文摘要" style="height:200px"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary" style="margin:0 auto;">提交</button>
 	</form>

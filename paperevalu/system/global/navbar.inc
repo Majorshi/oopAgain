@@ -27,7 +27,7 @@
     <div class="col-xs-3 mt60"> 
      <ul class="nav nav-pills nav-stacked"> 
       <li class="text-muted"> <h3>论文盲审</h3> </li> 
-      <li class="active"> <a href="studentHome.html"> 上传论文 </a> </li> 
+      <li class="inactive"> <a href="studentHome.html"> 上传论文 </a> </li> 
       <li class="inactive"> <a href="studentProgress.html"> 查看评审进度 </a> </li> 
       <li class="inactive"> <a href="studentResult.html"> 查看评审结果 </a> </li> 
       <li class="text-muted"> <h3>个人信息</h3> </li> 
@@ -35,5 +35,3 @@
       <li><a href="studentPassword.html">修改密码</a></li> 
      </ul> 
     </div> 
-  </div>
-</div>

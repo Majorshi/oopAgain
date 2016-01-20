@@ -6,8 +6,12 @@
 	<title>软件学院论文盲审系统</title>
 	<link rel="shortcut icon" href="/paperevalu/favicon.ico" type="image/x-icon" /><!--地址栏和标签上显示图标-->
 	<link href="/paperevalu/static/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="/paperevalu/static/css/index.css" rel="stylesheet" />
+	<link href="/paperevalu/static/css/default.css" rel="stylesheet" />
+	<!--
+	<script type="text/javascript" src="/paperevalu/static/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/paperevalu/static/js/jquery-ui-1.7.2.custom.min.js"></script>
+	-->
 	<script type="text/javascript" src="/paperevalu/static/js/jquery-2.0.3.js"></script>
    	<script type="text/javascript" src="/paperevalu/static/js/bootstrap.min.js"></script>
-</head> 
+</head>
 <body> 

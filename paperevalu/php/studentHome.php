@@ -13,6 +13,9 @@
 
     } else {
         ?>
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../static/css/home.css" rel="stylesheet" type="text/css" />
+        <link href="../static/css/index.css" rel="stylesheet" type="text/css" />
         <div class="container">
             <div class="row">
                 <div class="col-xs-3 mt60">
@@ -34,7 +37,7 @@
                         <div class="panel-body">
                             <form action = "uploadFile.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <input id="input-1" type="file" class="btn btn-default btn-lg btn-block"/>
+                                    <input name="file" id="input-1" type="file" class="btn btn-default btn-lg btn-block"/>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary ">确认提交</button>
@@ -50,5 +53,6 @@
         </div>
         <?php
     }
+include('../system/global/footer.inc');
         ?>
 

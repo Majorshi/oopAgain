@@ -8,11 +8,42 @@ function login(formEl)
 		return false;
 	}
 
-	alert(userval + '---' + userpwd);
+	$.post(
+		"../app/load.php",  
+        {
+			luser: userval,
+			lpwd: userpwd
+		},
+		function(data, status)
+		{
+			if(status == 'success')
+			{
+				if(data == 1)
+				{
+					setTimeout("window.location='adduser.php'",100);
+					return false;
+				}
+				else
+				{
+					$(".loadtips").html("*用户名密码错误");
+					return false;
+				}
+			}
+			else
+			{
+				$(".loadtips").html("*用户名密码错误");
+				return false;
+			}
+		}
+    );
 
-	var xmlhttp;
+
+
+	//alert(userval + '---' + userpwd);
+
+	/*var xmlhttp;
 	var lpoststr = "luser=" + userval + "&lpwd=" + userpwd;
-	var lurl = "/paperevalu/app/load.php";
+	var lurl = "../app/load.php";
 
 	if (window.XMLHttpRequest)
 	{
@@ -26,29 +57,26 @@ function login(formEl)
 	}
 	xmlhttp.onreadystatechange=function()
 	{
-		alert(xmlhttp.readyState);
-		alert(xmlhttp.status);
-
-		//alert(xmlhttp.responseText);
-
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 			e = xmlhttp.responseText;
 			eval("var result = e" );
 
+			alert(result);
+
 			if(result == "1")
 			{
-				alert("登录成功");
+				//alert('success');
 				return false;
 			}
 			else
 			{
-				alert(result);
+				$(".loadtips").html("*用户名密码错误");
 				return false;
 			}
 		}
 	}
 	xmlhttp.open("POST",lurl,true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send(lpoststr);
+	xmlhttp.send(lpoststr);*/
 }

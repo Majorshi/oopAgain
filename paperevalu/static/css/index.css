@@ -55,6 +55,14 @@ button {
     background-color: #FFF;
 }
 
+.loadtips
+{
+    color: #F00;
+    font-size: 12px;
+    margin: 15px -10px;
+    text-align: right;
+}
+
 .footer
 {
     width: 100%;

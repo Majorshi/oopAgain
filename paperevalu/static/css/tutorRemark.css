@@ -1,0 +1,19 @@
+.fromset {
+	float:left;
+	width:50%;
+	margin: 5px 0;
+}
+.form-group {
+	margin: 5px 0;
+}
+label,textarea,button {
+	margin: 5px 0;
+}
+.texta {
+	width: 90%;
+	height: 200px;
+}
+.textt {
+	width: 90%;
+	height: 20px;
+}

@@ -1,16 +1,11 @@
-<?php
+<?
   ob_start();
   @session_start();
   header("Content-Type:text/html;charset=utf-8");
   include("../system/config/root.php");
-  include('../system/global/header.inc');
-  include('../system/global/navbar.inc');
   include('../system/global/permissionCheck.php');
-  echo "<link href='/paperevalu/static/css/evaluateApply.css' rel='stylesheet' />";
-  // function gettoken() {
-  $_SESSION['wt_id'] = 2;
-  $_SESSION['wt_status'] = 1;
   permissionCheck(1);
+  	if ($_POST['paper_title'] != null && $_POST['paper_abstract'] != null && $_POST['majorid']) {
     $sql = "select * from wt_evaluate_period where start_time < ".time()." and end_time > ".time();
     $result = $mysqli->query($sql);
     if($result === false)
@@ -47,7 +42,6 @@
             }
             $result1->free();
             $sql2 = "select * from wt_users_relation, wt_users where wt_users.uid = wt_users_relation.teacher_id and wt_users_relation.student_id = ".$_SESSION['wt_id'];
-            echo $sql2;
             $teacherResult = $mysqli->query($sql2);
             if ($teacherResult->num_rows == 0) {
               echo "<script>alert('未找到您的导师信息，请联系管理员');window.location.href='index.php'; </script>";
@@ -56,29 +50,32 @@
               $teacherResult->data_seek(0);
               $dataset2 = $teacherResult->fetch_assoc();
               $dataset['teacher_name'] = $dataset2['user_name'];
+              $dataset['teacher_id'] = $dataset2['uid'];
               $teacherResult->free();
-
-              $majorsql = "select * from wt_major where state = 1";
-              $majorres = $mysqli->query($majorsql);
-              $majorres->data_seek(0); #重置指针到起始
-              $majordata = array();
-              while($mrow = $majorres->fetch_assoc())
-              {
-                  $majordata[] = $mrow;
+              if ($update == 1) {
+              	$deletesql = "delete from wt_paper  where uid = ".$_SESSION['wt_id']." and token = '".$token."'";
+              	$mysqli->query($deletesql);
               }
-              include('../view/evaluateApply.php');
+              	$insertsql = "INSERT INTO `wetrial`.`wt_paper` (`paper_id`, `uid`, `paper_title`,".
+              	" `paper_number`, `paper_abstract`, `paper_location`, `paper_major`, `token`,".
+              	" `apply_time`, `tutor_uid`, `tutor_name`, `tutor_opinion`, `tutor_time`,".
+              	" `inst_opinion`, `inst_time`, `paper_step`, `repet_res`, `check_res`) VALUES".
+				" (NULL, '".$_SESSION['wt_id']."', '".$_POST['paper_title']."', NULL, '".
+					$_POST['paper_abstract']."', NULL, '".$_POST['majorid']."', '".$token."', '".time()."', '".
+					$dataset['teacher_id']."', '".$dataset['teacher_name']."', NULL, NULL, NULL, NULL, '1', '0', '0');";
+			  
+			  $insertres = $mysqli->query($insertsql);
+			  if($insertres === false)
+			  {
+				 echo "<script>alert('添加记录失败，请重试');window.location.href='index.php'; </script>";
+			  } else {
+			  	 echo "<script>alert('添加成功！请等待审批');window.location.href='index.php'; </script>";
+			  }
             }
           }
         }
       }
-  // }
-  // $sql = "insert into wt_evaluate_period values(1, 1, ".strtotime("2016-1-1").", ".strtotime("2017-1-1").", '2016学年', '2016lalala', ".time().", ".time().", 1)";
-  // $rst = $mysqli->query($sql);
-  //判断当前时段的token
-  
-?>
-
-<?php
-include('../system/global/navbarfooter.inc');
-  include('../system/global/footer.inc');
+  	} else {
+  		echo "<script>alert('非法参数');window.location.href='index.php'; </script>";
+  	}
 ?>

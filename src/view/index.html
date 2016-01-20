@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>dayBit</title> 
+  <meta name="description" content="Creating Modal Window with Bootstrap" /> 
+  <link href="http://lib.sinaapp.com/js/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet" /> 
+  <link href="../static/css/index.css" rel="stylesheet" /> 
+  <script>
+function logIn()
+{
+	document.getElementById("logInLine").className = "active";
+	document.getElementById("registerLine").className = "inactive";
+document.getElementById("test").innerHTML='<form class="form-signin" role="form" name="loginForm" method="post" action="/signIn"><input type="text" name="name" class="form-control form-magin" placeholder="用户名" required="" autofocus=""><input type="password" name="password" class="form-control form-magin" placeholder="密码" required=""><button class="btn btn-lg btn-primary btn-block form-magin" type="submit" data-dismiss="modal" id="loginButton">登录</button></form>';
+}
+function register()
+{
+	document.getElementById("registerLine").className = "active";
+	document.getElementById("logInLine").className = "inactive";
+document.getElementById("test").innerHTML='<form class="form-signin" role="form" name="loginForm" method="post" action="/signIn"><select class="form-control form-magin"><option>学生</option><option>老师</option><option>管理员</option></select><input type="text" name="name" class="form-control form-magin" placeholder="用户名" required="" autofocus=""><input type="password" name="password" class="form-control form-magin" placeholder="密码" required=""><button class="btn btn-lg btn-primary btn-block form-magin" type="submit" data-dismiss="modal" id="loginButton">注册</button></form>';
+}
+
+</script> 
+ </head> 
+ <body> 
+  <div class="container"> 
+   <div id="title"> 
+    <h2>软件学院</h2> 
+    <h2>论文盲审系统</h2> 
+   </div> 
+   <!-- loginModal --> 
+   <div id="loginWindow"> 
+    <!--    <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">登录</h4>
+                </div>  --> 
+    <ul class="nav nav-tabs nav-justified form-magin"> 
+     <li id="logInLine" role="presentation" class="active"><a onclick="logIn()">登陆</a></li> 
+     <li id="registerLine" role="presentation" class="inactive"><a onclick="register()">注册</a></li> 
+    </ul> 
+    <div id="test" class="modal-body"> 
+     <form class="form-signin" role="form" name="loginForm" method="post" action="/signIn"> 
+      <input type="text" name="name" class="form-control form-magin" placeholder="用户名" required="" autofocus="" /> 
+      <input type="password" name="password" class="form-control form-magin" placeholder="密码" required="" /> 
+      <button class="btn btn-lg btn-primary btn-block form-magin" type="submit" data-dismiss="modal" id="loginButton">登录 </button> 
+     </form> 
+    </div> 
+   </div> 
+
+   <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.js"></script> 
+   <!-- Include all compiled plugins (below), or include individual files as needed --> 
+   <script src="http://lib.sinaapp.com/js/bootstrap/latest/js/bootstrap.min.js"></script> 
+  </div>  
+ </body>
+</html>

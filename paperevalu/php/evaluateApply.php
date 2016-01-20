@@ -31,6 +31,7 @@
         if ($re->num_rows == 0) {
           echo "<script>alert('用户不存在');window.location.href='index.php'; </script>";
         } else {
+
           $re->data_seek(0);
           $dataset = $re->fetch_assoc();
           $re->free();
@@ -45,10 +46,12 @@
               echo "<script>alert('您在当前学年中已申请过盲审');window.location.href='index.php'; </script>";
               exit();
             }
+          }
+            echo "string";
             $result1->free();
             $sql2 = "select * from wt_users_relation, wt_users where wt_users.uid = wt_users_relation.teacher_id and wt_users_relation.student_id = ".$_SESSION['wt_id'];
-            echo $sql2;
             $teacherResult = $mysqli->query($sql2);
+            echo "string";
             if ($teacherResult->num_rows == 0) {
               echo "<script>alert('未找到您的导师信息，请联系管理员');window.location.href='index.php'; </script>";
               exit();
@@ -70,7 +73,6 @@
             }
           }
         }
-      }
   // }
   // $sql = "insert into wt_evaluate_period values(1, 1, ".strtotime("2016-1-1").", ".strtotime("2017-1-1").", '2016学年', '2016lalala', ".time().", ".time().", 1)";
   // $rst = $mysqli->query($sql);

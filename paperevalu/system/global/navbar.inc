@@ -1,6 +1,5 @@
 
-  <link href="/paperevalu/static/css/bootstrap.min.css" rel="stylesheet" /> 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
    <div class="container"> 
     <div class="navbar-header"> 
      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
@@ -21,7 +20,7 @@
      </div> 
     </form> 
    </div> 
-  </div> 
+  </div>
   <div class="container"> 
    <div class="row"> 
     <div class="col-xs-3 mt60"> 
@@ -35,3 +34,4 @@
       <li><a href="studentPassword.html">修改密码</a></li> 
      </ul> 
     </div> 
+    

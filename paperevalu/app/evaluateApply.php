@@ -40,6 +40,7 @@
               echo "<script>alert('您在当前学年中已申请过盲审');window.location.href='../index.php'; </script>";
               exit();
             }
+          }
             $result1->free();
             $sql2 = "select * from wt_users_relation, wt_users where wt_users.uid = wt_users_relation.teacher_id and wt_users_relation.student_id = ".$_SESSION['wt_id'];
             $teacherResult = $mysqli->query($sql2);
@@ -71,7 +72,7 @@
 			  } else {
 			  	 echo "<script>alert('添加成功！请等待审批');window.location.href='../index.php'; </script>";
 			  }
-            }
+            
           }
         }
       }

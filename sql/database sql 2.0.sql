@@ -6,6 +6,10 @@ CREATE DATABASE IF NOT EXISTS wetrial DEFAULT CHARSET utf8 COLLATE utf8_general_
 
 -- --------------------------------------------------------
 
+use wetrial;
+
+-- --------------------------------------------------------
+
 --
 -- 表的结构 `wt_action`
 --
@@ -234,12 +238,14 @@ CREATE TABLE IF NOT EXISTS `wt_users` (
   `uid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户的 UID',
   `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `password` varchar(32) DEFAULT NULL COMMENT '用户密码',
-  `user_number` varchar(32) DEFAULT NULL COMMENT '学号',
+  `user_number` varchar(32) DEFAULT NULL COMMENT '学号/工号/身份证号',
+  `realname` varchar(255) DEFAULT NULL COMMENT '真实姓名',
   `email` varchar(255) DEFAULT NULL COMMENT 'EMAIL',
   `mobile` varchar(16) DEFAULT NULL COMMENT '用户手机',
   `avatar_file` varchar(128) DEFAULT NULL COMMENT '头像文件',
   `sex` tinyint(1) DEFAULT NULL COMMENT '性别',
   `status_id` tinyint(1) DEFAULT '0' COMMENT '身份ID',
+  `is_expert` tinyint(1) DEFAULT '0' COMMENT '是否是专家（0->不是; 1->是）',
   `entrance_time` int(10) DEFAULT NULL COMMENT '入学时间',
   `if_degree` tinyint(1) DEFAULT '1' COMMENT '是否有学位资格',
   `reg_time` int(10) DEFAULT NULL COMMENT '注册时间',
@@ -268,11 +274,11 @@ INSERT INTO `wt_users` (`uid`, `user_name`, `password`, `user_number`, `email`, 
 
 CREATE TABLE IF NOT EXISTS `wt_users_extradata` (
   `uid` int(11) unsigned NOT NULL COMMENT '用户的 UID',
-  `user_idno` varchar(32) DEFAULT NULL COMMENT '身份证号或工号',
+  `user_idno` varchar(32) DEFAULT NULL COMMENT '身份证号或工号（先忽略）',
   `user_unit` varchar(255) DEFAULT NULL COMMENT '工作单位',
   `user_post` varchar(255) DEFAULT NULL COMMENT '专业技术职务',
-  `user_specialty` varchar(255) DEFAULT NULL COMMENT '专业专长',
-  `if_leader` tinyint(1) DEFAULT '0' COMMENT '是否领导',
+  `user_major` int(11) DEFAULT NULL COMMENT '专业专长',
+  `if_leader` tinyint(1) DEFAULT '0' COMMENT '是否硕导',
   `leader_name` varchar(255) DEFAULT NULL COMMENT '职称',
   KEY `uid` (`uid`),
   KEY `user_idno` (`user_idno`)
@@ -312,5 +318,4 @@ CREATE TABLE IF NOT EXISTS `wt_users_status` (
 INSERT INTO `wt_users_status` (`status_id`, `status_name`, `state`) VALUES
 (1, '研究生', 1),
 (2, '管理员', 1),
-(3, '研究生导师', 1),
-(4, '专家', 1);
+(3, '研究生导师', 1);

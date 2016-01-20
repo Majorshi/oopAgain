@@ -1,10 +1,8 @@
 <?php
 include('../system/global/header.inc');
-require_once ('funcLib/funcIsSignedIn.inc');
 
-session_start();
-
-if( isSignedIn() ) {
+// TODO:权限
+if( false ) {
 
     print "您还没有登录，5秒之后跳转回主页";
     print ",如果没有自动跳转，请点击";
@@ -25,36 +23,35 @@ if( isSignedIn() ) {
                 <div class="btn-group">
 
                     <select id="major">
-                        <option>static1</option>
-                        <option>static2</option>
+                        <option value="0">全部领域</option>
                     </select>
 
                     <button class="btn btn-primary" id="confirmMajor" >确认领域</button>
                 </div>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        选择文件
-                    </div>
-                    <div class="panel-body">
-                        <form action = "uploadFile.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <input name="file" id="input-1" type="file" class="btn btn-default btn-lg btn-block"/>
-                            </div>
+                <div class="btn-group">
+                    <tale id="paperlist">
+                        <tr>
+                            <td><input type="checkbox" value="0" name="checkpaper"></td>
+                                <td>论文标题</td>
+                                <td>论文领域</td>
 
-                            <button type="submit" class="btn btn-primary ">确认提交</button>
-                        </form>
-                    </div>
-                    <div class="panel-footer">
-                        <li class="help-block">必须是 PDF 格式文件</li>
-                        <li class="help-block">文件大小小于 10 M</li>
-                    </div>
+                        </tr>
+                    </tale>
+
+                    <talbe id="expertlist">
+                        <tr>
+                            <td><input type="checkbox" value="0"></td>
+                            <td>专家真名</td>
+                            <td>专家领域</td>
+                        </tr>
+                    </talbe>
                 </div>
+
             </div>
         </div>
     </div>
     <?php
 }
-include('../system/global/footer.inc');
 ?>
 

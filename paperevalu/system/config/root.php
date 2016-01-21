@@ -14,12 +14,7 @@
 
     $mysqli = mysqli_init();
 
-    $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 2);//设置超时时间
+    $mysqli->real_connect('localhost', 'root', '', 'wetrial');
 
-    $mysqli->real_connect('localhost', 'oop', 'oop', 'wetrial');
-    if(mysqli_connect_errno())
-    {
-     echo mysqli_connect_error();
-    } 
     mysqli_set_charset($mysqli, "utf8");
 ?>

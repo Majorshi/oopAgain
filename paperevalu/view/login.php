@@ -2,6 +2,7 @@
   include('../system/global/header.inc');
 
   ob_start();
+  session_unset();
   @session_destroy();
 ?>
 <link href="/paperevalu/static/css/index.css" rel="stylesheet" />
@@ -9,7 +10,7 @@
 <div class="container"> 
   <div id="loginWindow">
     <div id="title"> 
-      <img src="../static/images/logo.gif" alt="院徽" />
+      <img src="/paperevalu/static/images/logo.gif" alt="院徽" />
       <span>论文盲审系统</span>
     </div>
     <div id="test" class="modal-body"> 
@@ -22,6 +23,6 @@
     </div> 
   </div>
 </div>
-<?php
-  include('../system/global/footer.inc');
-?>
+<div class="footer">Copyright &copy; <?php echo date('Y'); ?>, All Rights Reserved Powered By School of Software, BIT</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <?php
     include('../system/global/header.inc');
+    include('../system/global/session.inc');
     require_once ('funcLib/funcIsSignedIn.inc');
 
     session_start();

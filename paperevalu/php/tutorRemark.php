@@ -1,15 +1,11 @@
 <?php
-  ob_start();
-  @session_start();
-  header("Content-Type:text/html;charset=utf-8");
   include("../system/config/root.php");
   include('../system/global/header.inc');
+  include('../system/global/session.inc');
   include('../system/global/navbar.inc');
   include('../system/global/permissionCheck.php');
   echo "<link href='/paperevalu/static/css/tutorRemark.css' rel='stylesheet' />";
   // function gettoken() {
-  $_SESSION['wt_id'] = 3;
-  $_SESSION['wt_status'] = 3;
   permissionCheck(3);
   if ($_GET['paper_id'] != null) {
     $papersql = "select * from wt_paper,wt_major where wt_paper.paper_id = ".$_GET['paper_id']." and wt_paper.tutor_uid = ".$_SESSION['wt_id']." and wt_major.major_id = wt_paper.paper_major and paper_step = 10";
@@ -41,6 +37,5 @@
   }
 ?>
 <?php
-include('../system/global/navbarfooter.inc');
-  include('../system/global/footer.inc');
+  include('../system/global/navbarfooter.inc');
 ?>

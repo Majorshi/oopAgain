@@ -28,7 +28,7 @@
     // 查询待分配论文
     $paperSet = array();
 
-    $sqlSelect = "select `paper_id`,`paper_title`,`tutor_uid` from `wt_paper` where `paper_step` = 50";
+    $sqlSelect = "select `paper_id`,`paper_title`,`paper_major`,`tutor_uid` from `wt_paper` where `paper_step` = 50";
     $ret = $mysqli->query( $sqlSelect );
 
     while( $row = $ret->fetch_assoc() ) {
@@ -37,6 +37,8 @@
 
     // 查询专家
     $profSet = array();
+
+    $sqlSelect = "select `uid`,`realname`, ";
 
 
 

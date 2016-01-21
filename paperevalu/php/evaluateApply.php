@@ -1,15 +1,10 @@
 <?php
-  ob_start();
-  @session_start();
-  header("Content-Type:text/html;charset=utf-8");
   include("../system/config/root.php");
   include('../system/global/header.inc');
+  include('../system/global/session.inc');
   include('../system/global/navbar.inc');
   include('../system/global/permissionCheck.php');
   echo "<link href='/paperevalu/static/css/evaluateApply.css' rel='stylesheet' />";
-  // function gettoken() {
-  $_SESSION['wt_id'] = 2;
-  $_SESSION['wt_status'] = 1;
   permissionCheck(1);
     $sql = "select * from wt_evaluate_period where start_time < ".time()." and end_time > ".time();
     $result = $mysqli->query($sql);
@@ -82,5 +77,4 @@
 
 <?php
 include('../system/global/navbarfooter.inc');
-  include('../system/global/footer.inc');
 ?>

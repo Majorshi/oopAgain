@@ -28,7 +28,7 @@ require( "../system/config/root.php" );
 
     $username = $_SESSION[ "wt_username" ];
 
-    $dateStr = date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000));
+    $dateStr = date( DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000) );
     $dateStr = str_ireplace( [ "+" , "-" , ":" ] , "_" , $dateStr );
 
     $path = "../upload/";

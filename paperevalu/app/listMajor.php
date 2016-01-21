@@ -1,5 +1,5 @@
 <?php
-
+    require ("../system/global/session.inc");
     require( "../system/config/root.php" );
 
 
@@ -26,23 +26,46 @@
 
 
     // 查询待分配论文
-    $paperSet = array();
 
-    $sqlSelect = "select `paper_id`,`paper_title`,`paper_major`,`tutor_uid` from `wt_paper` where `paper_step` = 50";
-    $ret = $mysqli->query( $sqlSelect );
+    // 首先获得当前token
+    $nowTime = time();
 
+
+    $sqlSelectToken = "select `token` from `wt_evaluate_period` where `start_time` <" . $nowTime . " and " . $nowTime . "< end_time";
+    $ret = $mysqli->query( $sqlSelectToken );
+    if( $ret != true ) {
+        exit();
+    }
+
+    $tokenData = array();
     while( $row = $ret->fetch_assoc() ) {
-        $paperSet[] = $row;
+        $tokenData[] = $row;
+    }
+    $token = $tokenData[0]["token"];
+
+    // 获得符合token的论文
+    $paperSet = array();
+    $sqlSelect = "select `paper_id`,`paper_title`,`paper_major`,`tutor_uid` from `wt_paper` where `paper_step` = 50 and `token` =" . $token;
+    $ret = $mysqli->query( $sqlSelect );
+    while( $row = $ret->fetch_assoc() ) {
+        $paperSet[] = $row ;
     }
 
     // 查询专家
-    $profSet = array();
+    $expertSet = array();
+
+    $sqlSelect = "SELECT a.uid,a.realname,b.user_major FROM wt_users a JOIN wt_users_extradata b on a.uid=b.uid WHERE a.uid = b.uid and a.is_expert = 1";
+    $ret = $mysqli->query( $sqlSelect );
 
     $sqlSelect = "select `uid`,`realname`, ";
 
+    while( $row = $ret->fetch_assoc() ) {
+        $expertSet[] = $row;
+    }
 
-
+    // 返回专家和论文
     echo json_encode( [
-        "count" => $cnt,
-        "major" => $majorSet
+        "majorSet" => $majorSet,
+        "paperSet" => $paperSet,
+        "expertSet" => $expertSet
     ] );

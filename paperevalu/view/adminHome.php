@@ -24,7 +24,7 @@
 	       if($downloadPaper){
 		       while($downloadPaperRow = $downloadPaper->fetch_assoc()){
 			       echo "<tr>";
-			       echo "<td> <a href=\"{$downloadPaperRow['paper_location']} target=\"_blank\"\">{$downloadPaperRow['paper_title']}</a> </td> ";
+			       echo "<td> <a href=\"{$downloadPaperRow['paper_location']}\" target=\"_blank\">{$downloadPaperRow['paper_title']}</a> </td> ";
 			       echo "<td> {$downloadPaperRow['realname']} </td> ";
 			       echo "<td> {$downloadPaperRow['user_number']} </td> ";
 			       echo "<td> {$downloadPaperRow['tutor_name']} </td> ";

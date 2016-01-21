@@ -11,7 +11,7 @@
     #$testSQLStr = "select * from wt_paper_repet";
     #$testRate = $mysqli->query($testSQLStr);
    
-    $insertRateSQLStr = "insert into wt_paper_repet (repet_id, paper_id, repet_rate) values ({$paperID}, {$paperID}, {$paperRate})";
+    $insertRateSQLStr = "insert into wt_paper_repet (paper_id, repet_rate) values ({$paperID}, {$paperRate})";
     $insertRate = $mysqli->query($insertRateSQLStr);
     
     

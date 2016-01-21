@@ -2,10 +2,6 @@
 -- 数据库: `wetrial`
 --
 
-CREATE DATABASE IF NOT EXISTS wetrial DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-
--- --------------------------------------------------------
-
 use wetrial;
 
 -- --------------------------------------------------------
@@ -59,7 +55,14 @@ CREATE TABLE IF NOT EXISTS `wt_evaluate_period` (
   KEY `start_time` (`start_time`),
   KEY `end_time` (`end_time`),
   KEY `state` (`state`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='设置评审开启' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='设置评审开启' AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `wt_evaluate_period`
+--
+
+INSERT INTO `wt_evaluate_period` (`id`, `uid`, `start_time`, `end_time`, `evaluate_name`, `token`, `add_time`, `update_time`, `state`) VALUES
+(1, 1, 1453306572, 1454428500, '2016年软件学院春季硕士毕业生毕业论文评审', '11453306696', 1453306696, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -106,7 +109,15 @@ CREATE TABLE IF NOT EXISTS `wt_paper` (
   KEY `check_res` (`check_res`),
   KEY `paper_major` (`paper_major`),
   KEY `paper_step` (`paper_step`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `wt_paper`
+--
+
+INSERT INTO `wt_paper` (`paper_id`, `uid`, `paper_title`, `paper_number`, `paper_abstract`, `paper_location`, `paper_major`, `token`, `apply_time`, `tutor_uid`, `tutor_name`, `tutor_opinion`, `tutor_time`, `inst_opinion`, `inst_time`, `paper_step`, `repet_res`, `check_res`) VALUES
+(1, 1, '1111', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 90, 0, 0),
+(2, 1, '2222', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 50, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -205,14 +216,22 @@ CREATE TABLE IF NOT EXISTS `wt_paper_repet` (
   `repet_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '不端检测记录ID',
   `paper_id` int(11) NOT NULL COMMENT '论文ID',
   `repet_uid` int(11) DEFAULT '0' COMMENT '检测负责老师ID',
-  `repet_rate` int(4) DEFAULT '0' COMMENT '检测结果重复率',
+  `repet_rate` float DEFAULT '0' COMMENT '检测结果重复率',
   `repet_res` int(4) DEFAULT '0' COMMENT '检测结果，系统管理员配置',
   `repet_time` int(10) DEFAULT NULL COMMENT '检测时间',
   `add_time` int(10) DEFAULT NULL COMMENT '录入时间，自动生成',
   PRIMARY KEY (`repet_id`),
   KEY `paper_id` (`paper_id`),
   KEY `repet_uid` (`repet_uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='学术不端检测结果' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='学术不端检测结果' AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `wt_paper_repet`
+--
+
+INSERT INTO `wt_paper_repet` (`repet_id`, `paper_id`, `repet_uid`, `repet_rate`, `repet_res`, `repet_time`, `add_time`) VALUES
+(1, 1, 0, 34, 0, NULL, NULL),
+(2, 2, 0, 20, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -238,14 +257,14 @@ CREATE TABLE IF NOT EXISTS `wt_users` (
   `uid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户的 UID',
   `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `password` varchar(32) DEFAULT NULL COMMENT '用户密码',
+  `realname` varchar(225) DEFAULT NULL COMMENT '真实姓名',
   `user_number` varchar(32) DEFAULT NULL COMMENT '学号/工号/身份证号',
-  `realname` varchar(255) DEFAULT NULL COMMENT '真实姓名',
   `email` varchar(255) DEFAULT NULL COMMENT 'EMAIL',
   `mobile` varchar(16) DEFAULT NULL COMMENT '用户手机',
   `avatar_file` varchar(128) DEFAULT NULL COMMENT '头像文件',
   `sex` tinyint(1) DEFAULT NULL COMMENT '性别',
   `status_id` tinyint(1) DEFAULT '0' COMMENT '身份ID',
-  `is_expert` tinyint(1) DEFAULT '0' COMMENT '是否是专家（0->不是; 1->是）',
+  `is_expert` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否是专家（0->不是; 1->是）',
   `entrance_time` int(10) DEFAULT NULL COMMENT '入学时间',
   `if_degree` tinyint(1) DEFAULT '1' COMMENT '是否有学位资格',
   `reg_time` int(10) DEFAULT NULL COMMENT '注册时间',
@@ -263,8 +282,8 @@ CREATE TABLE IF NOT EXISTS `wt_users` (
 -- 转存表中的数据 `wt_users`
 --
 
-INSERT INTO `wt_users` (`uid`, `user_name`, `password`, `user_number`, `email`, `mobile`, `avatar_file`, `sex`, `status_id`, `entrance_time`, `if_degree`, `reg_time`, `state`) VALUES
-(1, 'admin', '1023qq1216', NULL, NULL, NULL, NULL, NULL, 0, NULL, 1, NULL, 1);
+INSERT INTO `wt_users` (`uid`, `user_name`, `password`, `realname`, `user_number`, `email`, `mobile`, `avatar_file`, `sex`, `status_id`, `is_expert`, `entrance_time`, `if_degree`, `reg_time`, `state`) VALUES
+(1, 'admin', '1023qq1216', '孙晨光', '2220150590', '1187422722@qq.com', '18810278567', NULL, 1, 1, 0, 1441036801, 1, 1453248000, 1);
 
 -- --------------------------------------------------------
 
@@ -283,6 +302,13 @@ CREATE TABLE IF NOT EXISTS `wt_users_extradata` (
   KEY `uid` (`uid`),
   KEY `user_idno` (`user_idno`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `wt_users_extradata`
+--
+
+INSERT INTO `wt_users_extradata` (`uid`, `user_idno`, `user_unit`, `user_post`, `user_major`, `if_leader`, `leader_name`) VALUES
+(1, '410225199210231532', '北京理工大学', '学生', 0, 0, NULL);
 
 -- --------------------------------------------------------
 

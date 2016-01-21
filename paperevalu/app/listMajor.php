@@ -57,6 +57,8 @@
     $sqlSelect = "SELECT a.uid,a.realname,b.user_major FROM wt_users a JOIN wt_users_extradata b on a.uid=b.uid WHERE a.uid = b.uid and a.is_expert = 1";
     $ret = $mysqli->query( $sqlSelect );
 
+    $sqlSelect = "select `uid`,`realname`, ";
+
     while( $row = $ret->fetch_assoc() ) {
         $expertSet[] = $row;
     }

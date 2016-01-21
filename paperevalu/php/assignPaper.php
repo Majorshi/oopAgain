@@ -1,5 +1,7 @@
 <?php
-include('../system/global/header.inc');
+
+include('../system/global/session.inc');
+require_once ('funcLib/funcIsSignedIn.inc');
 
 // TODO:权限
 if( false ) {

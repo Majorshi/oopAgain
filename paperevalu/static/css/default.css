@@ -1,13 +1,5 @@
-
-
-.footer
-{
-    width: 100%;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    color: #DDD;
-    font-size: 14px;
-    margin-top: 30px;
-}
+.navbar-header img{width: 45px;height: 45px; background-color: #DDD; border-radius: 22.5px; margin-top: 3px; float: left;}
+.navbar-header span{color:#DDD; font-size: 18px;font-family: '微软雅黑'; font-weight: bold; margin: 15px 0 0 8px; display: block; float: left;}
+.footer{width: 100%;height: 60px;text-align: center;line-height: 60px;color: #DDD;font-size: 14px;margin-top: 30px;}
+.footerbg{background-color: #222;border-color: #080808;position: fixed;bottom: 0;}
 

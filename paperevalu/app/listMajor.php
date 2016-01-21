@@ -1,5 +1,5 @@
 <?php
-
+    require ("../system/global/session.inc");
     require( "../system/config/root.php" );
 
 
@@ -28,8 +28,8 @@
     // 查询待分配论文
 
     // 首先获得当前token
-    $nowTime = 1;
-    // TODO: 获得时间戳
+    $nowTime = time();
+
 
     $sqlSelectToken = "select `token` from `wt_evaluate_period` where `start_time` <" . $nowTime . " and " . $nowTime . "< end_time";
     $ret = $mysqli->query( $sqlSelectToken );
@@ -48,14 +48,13 @@
     $sqlSelect = "select `paper_id`,`paper_title`,`paper_major`,`tutor_uid` from `wt_paper` where `paper_step` = 50 and `token` =" . $token;
     $ret = $mysqli->query( $sqlSelect );
     while( $row = $ret->fetch_assoc() ) {
-        $paperSet[] = 1 ;
+        $paperSet[] = $row ;
     }
 
     // 查询专家
     $expertSet = array();
 
-    // TODO：检查is_expert字段
-    $sqlSelect = "SELECT a.uid,a.realname,b.user_major FROM wt_users a JOIN wt_users_extradata b on a.uid=b.uid WHERE a.uid = b.uid";
+    $sqlSelect = "SELECT a.uid,a.realname,b.user_major FROM wt_users a JOIN wt_users_extradata b on a.uid=b.uid WHERE a.uid = b.uid and a.is_expert = 1";
     $ret = $mysqli->query( $sqlSelect );
 
     while( $row = $ret->fetch_assoc() ) {

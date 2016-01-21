@@ -26,24 +26,25 @@ if( false ) {
                         <option value="0">全部领域</option>
                     </select>
 
-                    <button class="btn btn-primary" id="confirmMajor" >确认领域</button>
+
                 </div>
 
+
+                <button class="btn btn-primary" id="confirmMajor" >确认</button>
+
                 <div class="btn-group">
-                    <tale id="paperlist">
+                    <table id="paperlist">
                         <tr>
-                            <td><input type="checkbox" value="0" name="checkpaper"></td>
+                            <td><input type="checkbox" value="0" ></td>
                                 <td>论文标题</td>
-                                <td>论文领域</td>
 
                         </tr>
-                    </tale>
+                    </table>
 
                     <talbe id="expertlist">
                         <tr>
-                            <td><input type="checkbox" value="0"></td>
+                            <td><input type="checkexpert" value="0" ></td>
                             <td>专家真名</td>
-                            <td>专家领域</td>
                         </tr>
                     </talbe>
                 </div>

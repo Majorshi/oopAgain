@@ -14,7 +14,7 @@
 
     $mysqli = mysqli_init();
 
-    $mysqli->real_connect('localhost', 'root', '', 'wetrial');
+    $mysqli->real_connect('localhost', 'oop', 'oop', 'wetrial');
 
     mysqli_set_charset($mysqli, "utf8");
 ?>

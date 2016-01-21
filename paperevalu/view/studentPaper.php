@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../static/css/home.css">
 <div class="col-xs-9 mt100">
 	<p style="font-size:20px;">研究生学位论文评审情况</p>
 	<table class="table table-hover" style="margin-bottom:50px">

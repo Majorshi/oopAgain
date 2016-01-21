@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../static/css/home.css">
 <div class="col-xs-9 mt100">
 	<p style="font-size:20px;">研究生学位论文评审申请书</p>
 	<form method="post" action="/paperevalu/app/evaluateApply.php">
@@ -27,4 +28,5 @@
 		</div>
 		<button type="submit" class="btn btn-primary" style="margin:0 auto;">提交</button>
 	</form>
+	<div style="clear:both"></div>
 </div>

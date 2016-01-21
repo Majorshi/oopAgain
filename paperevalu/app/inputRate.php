@@ -7,11 +7,12 @@
 
 
 	include("../system/config/root.php");
+	include('../system/global/session.inc');
    
     #$testSQLStr = "select * from wt_paper_repet";
     #$testRate = $mysqli->query($testSQLStr);
    
-    $insertRateSQLStr = "insert into wt_paper_repet (repet_id, paper_id, repet_rate) values ({$paperID}, {$paperID}, {$paperRate})";
+    $insertRateSQLStr = "insert into wt_paper_repet (paper_id, repet_rate, repet_uid, repet_time, add_time) values ({$paperID}, {$paperRate}, {$_SESSION['wt_id']}, ".time().", ".time().")";
     $insertRate = $mysqli->query($insertRateSQLStr);
     
     
